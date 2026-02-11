@@ -1,178 +1,93 @@
-# ChainScore AI
+# PumpGuardX AI
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Node 18+](https://img.shields.io/badge/node-18+-green.svg)](https://nodejs.org/)
-[![Status: Alpha](https://img.shields.io/badge/status-alpha-orange.svg)]()
+[![Python](https://img.shields.io/badge/python-3.10+-blue.svg)]()
+[![Frontend](https://img.shields.io/badge/react-18-teal.svg)]()
+[![Status](https://img.shields.io/badge/status-alpha-orange.svg)]()
 
-**Automated On-Chain Intelligence & Risk Assessment Protocol**
+**Advanced On-Chain Forensic Protocol for Pump.fun Assets**
 
 ---
 
 ## 1. Project Overview & Mission Statement
 
-ChainScore AI is an open-source research initiative dedicated to democratizing access to institutional-grade blockchain forensics. Our mission is to bridge the asymmetric information gap between sophisticated market participants and retail investors by providing a transparent, algorithmic, and verifiable trust layer for decentralized finance (DeFi).
+PumpGuardX is a decentralized intelligence system designed to sanitize the Solana token launch ecosystem. Our mission is to provide retail participants with institutional-grade forensic tools that detect algorithmic manipulation, Sybil attacks, and malicious contract patterns in real-time.
 
-We leverage advanced machine learning models, graph theory, and real-time on-chain data ingestion to produce a "Trust Score"—a singular, comprehensive metric that encapsulates the legitimacy and risk profile of newly launched digital assets. ChainScore AI is not merely a tool but a foundational protocol for safer interaction with the blockchain ecosystem.
+As the velocity of token launches increases, the technical barrier for due diligence has become too high for the average user. PumpGuardX bridges this gap by abstracting complex graph theory and statistical analysis into a simple, interpretable **Trust Score**.
 
 ## 2. Problem Statement
 
-The decentralized nature of permissionless blockchains, while revolutionary, introduces significant risks for the average user:
+The "Pump and Dump" economy on platforms like Pump.fun relies on information asymmetry. Malicious actors use sophisticated tooling to:
+*   **Fake Volume:** Using wash-trading bots to simulate market interest and attract retail buy-in.
+*   **Cluster Holdings:** Distributing supply across hundreds of "fresh" wallets to bypass concentration alerts.
+*   **Manipulate Charts:** Coordinated buy/sell pressure designed to trigger FOMO.
 
-*   **Opacity of On-Chain Activity:** Retail participants often lack the technical expertise to parse raw compiled bytecode or trace complex transaction graphs.
-*   **Sophisticated Manipulation:** Malicious actors utilize automated scripts to generate artificial volume (wash trading), spoof liquidity, and obfuscate fund provenance through mixer contracts.
-*   **Speed of Exploitation:** Manual due diligence is insufficient against high-frequency rug pulls and liquidity extraction attacks which occur within blocks of token generation.
-
-ChainScore AI addresses these systemic vulnerabilities by automating the due diligence process, providing real-time, interpretable verdicts that empower users to make informed decisions without requiring deep technical knowledge.
+PumpGuardX treats these activities as **Anomalies** and applies algorithmic detection to separate organic market behavior from artificial manipulation.
 
 ## 3. Features
 
-Our system integrates multiple analytical modules to provide a holistic assessment:
+*   **Multivariate Wallet Clustering:** Detects linked entities through funding-graph analysis and transaction proximity.
+*   **Volume Authenticity Engine:** Applies statistical tests (recursive Benford testing) to trade histories to identify bot-driven distributions.
+*   **Bytecode Risk Scanner:** Static analysis of Solana/Anchor contracts to detect hidden freeze or mint authorities.
+*   **AI Verdict System:** A specialized ensemble model trained on thousands of successful and failed launches provides a qualitative risk assessment.
+*   **Interactive Forensic Dashboard:** Real-time visualization of risk metrics and supply distribution.
 
-*   **Graph-Based Wallet Clustering:** Identifies Sybil attacks and developer-linked wallets by analyzing transaction topology and funding sources.
-*   **Volume Authenticity Analysis:** Distinguishes between organic market movements and algorithmic wash trading patterns using statistical anomaly detection.
-*   **Smart Contract Risk Heuristics:** Static and dynamic analysis of bytecode to detect malicious functions (e.g., `mint`, `blacklist`, `owner_withdraw`, `fake_renounce`).
-*   **The "Verdict" Engine:** A proprietary ensemble model that synthesizes data from all modules to generate a final Trust Score (0-100) and a qualitative risk assessment.
-*   **Shareable Forensic Reports:** Automatically generates detailed, cryptographic-proof dashboards for investigated tokens, suitable for community sharing.
-
-## 4. High-Level System Architecture
-
-The ChainScore AI architecture is designed for modularity, scalability, and fault tolerance.
-
-```mermaid
-graph TD
-    A[Data Ingestion Layer] -->|Raw Blocks & Tx| B(Parser & Indexer)
-    B --> C{Analysis Core}
-    C -->|Graph Data| D[Wallet Clustering Module]
-    C -->|Time Series| E[Volume Analysis Module]
-    C -->|Bytecode| F[Contract Risk Module]
-    D --> G[AI Verdict Engine]
-    E --> G
-    F --> G
-    G --> H[API Gateway]
-    H --> I[Frontend Dashboard]
-    H --> J[External Integrations]
-```
-
-### Core Components
-1.  **Frontend (React/Next.js):** A high-performance, interactive dashboard for visualizing data and reports.
-2.  **Backend (Node.js/Express):** Manages API requests, user authentication, and report storage.
-3.  **AI Engine (Python/PyTorch):** The computational heart of the system, running inference on pre-trained risk models.
-4.  **Data Pipelines (Apache Kafka/Redis):** Handles high-throughput ingestion of mempool and block data.
-
-## 5. AI Methodology
-
-ChainScore AI utilizes a multi-modal approach to risk assessment:
-
-*   **Data Structure:** We normalize on-chain events into a canonical graph representation where nodes represent addresses and edges represent value transfer or contract interactions.
-*   **Feature Engineering:** We extract over 150 distinct features, including Gini coefficients of token distribution, liquidity provider (LP) lock duration, and code similarity scores to known scams.
-*   **Interpretation:** Our models are trained on a labeled dataset of historical exploits and legitimate projects. We employ Explainable AI (XAI) techniques to ensure that every Trust Score is accompanied by human-readable reasoning (e.g., "Score reduced by 40 points due to 80% of liquidity being held by 3 associated wallets").
-
-## 6. Example Analysis Output
-
-The system produces a structured JSON report for downstream consumption:
-
-```json
-{
-  "target_asset": "0x1234...abcd",
-  "timestamp": "2024-10-27T14:30:00Z",
-  "trust_score": 12,
-  "risk_level": "CRITICAL",
-  "verdict_summary": "High probability of liquidity extraction mechanism detected.",
-  "modules": {
-    "wallet_clustering": {
-      "cluster_size": 15,
-      "developer_holding_pct": 0.45,
-      "flag": "sybil_distribution_detected"
-    },
-    "volume_analysis": {
-      "organic_ratio": 0.05,
-      "wash_trading_detected": true,
-      "anomaly_score": 0.92
-    },
-    "contract_security": {
-      "verified_source": true,
-      "ownership_renounced": false,
-      "dangerous_functions": ["enableTrading", "setMaxTx"]
-    }
-  },
-  "metadata": {
-    "model_version": "v2.1.0-alpha",
-    "execution_time_ms": 450
-  }
-}
-```
-
-## 7. Repository Structure
+## 4. System Architecture
 
 ```text
-chainscore-ai/
-├── contracts/          # Solidity interfaces and test contracts
-├── data/               # Datasets and model checkpoints (GitLFS)
-├── docs/               # Technical documentation and whitepapers
-├── pipeline/           # Data ingestion and normalization scripts
-├── src/
-│   ├── ai/             # Python-based ML models and inference code
-│   ├── api/            # Node.js backend services
-│   └── dashboard/      # React frontend application
-├── tests/              # End-to-end and unit test suites
-├── docker-compose.yml  # Container orchestration
-└── README.md           # This file
+[Frontend/React] <---> [FastAPI Backend] <---> [On-Chain Data Indexer]
+                            |
+           _________________|_________________
+          |                 |                 |
+    [Wallet Clusterer] [Volume Analyzer] [Contract Scanner]
+          |                 |                 |
+          |_________________V_________________|
+                            |
+                 [AI Scoring & Verdict Engine]
 ```
 
-## 8. Installation & Setup
+## 5. AI Methodology & Trust Score
 
-Prerequisites:
-*   Node.js v18+
-*   Python 3.10+
-*   Docker & Docker Compose
+PumpGuardX utilizes a multi-step inference pipeline:
+1.  **Feature Extraction:** Normalizes raw RPC data into 150+ quantitative features.
+2.  **Pattern Recognition:** Identifies signatures of known botting scripts and "Developer-Exit" scenarios.
+3.  **Synthesis:** Combines quantitative penalties (concentration, taxes) with qualitative AI confidence scores.
 
-### Building the Project
+The resulting **Trust Score (0-100)** is categorized into risk tiers:
+*   **80-100 (LOW):** Organic behavior, decentralized supply.
+*   **50-79 (MEDIUM):** Some suspicious clustering or low liquidity.
+*   **30-49 (HIGH):** Significant inorganic volume or centralized holdings.
+*   **0-29 (CRITICAL):** Malicious contract code or extreme Sybil manipulation.
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/chainscore-ai/core.git
-    cd chainscore-ai
-    ```
+## 6. Installation
 
-2.  **Initialize the Environment:**
-    ```bash
-    # Install backend dependencies
-    cd src/api && npm install
+### Backend (Python)
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate
+pip install -r ../requirements.txt
+uvicorn main:app --reload
+```
 
-    # Install AI engine dependencies
-    cd ../../src/ai && pip install -r requirements.txt
-    ```
+### Frontend (React)
+```bash
+cd frontend
+npm install
+npm start
+```
 
-3.  **Run the System (Docker):**
-    ```bash
-    docker-compose up --build -d
-    ```
+## 7. Roadmap
 
-4.  **Access the Dashboard:**
-    Navigate to `http://localhost:3000` to view the local instance.
+*   **Phase Alpha (Current):** Core analysis engine and static wallet clustering.
+*   **Phase Beta:** Integration with real-time mempool data for "Pre-Pump" warnings.
+*   **Phase Public:** Community-driven risk labeling system and API for Telegram bots.
+*   **Phase DAO:** Governance of risk weighting parameters via PGX token holders.
 
-## 9. Roadmap
+## 8. Disclaimer
 
-Our development is structured into four distinct phases:
-
-*   **Phase I: Alpha (Current)** - Core infrastructure development, model training on historic data, and internal testing of the clustering, algorithm.
-*   **Phase II: Beta** - Public testnet launch, API access for select partners, and community validation of Trust Scores.
-*   **Phase III: Public Release** - Mainnet integration, full open-source release of all models, and launch of the retail-facing dashboard.
-*   **Phase IV: DAO Governance** - Decentralization of the protocol, where token holders vote on model parameters and risk heuristics.
-
-## 10. Open Source & Transparency
-
-ChainScore AI is built on the philosophy that security tools must be as transparent as the blockchains they analyze. We are committed to:
-
-*   **Code Transparency:** All analysis logic and model architectures are open for peer review.
-*   **Data Availability:** We provide sanitized datasets to the research community to foster innovation in on-chain forensics.
-*   **Community Collaboration:** We actively encourage contributions from security researchers, data scientists, and developers.
-
-## 11. Disclaimer
-
-**ChainScore AI is a research tool and does not constitute financial or investment advice.** The Trust Score is a probabilistic metric based on historical patterns and on-chain data. It does not guarantee the safety of any asset or the future performance of any token. Users should always conduct their own research. The maintainers of ChainScore AI accept no liability for any losses incurred through the use of this software.
+**PumpGuardX is an experimental research tool and NOT financial advice.** Decentralized finance (DeFi) involves high risk. This software uses probabilistic models that may not capture all types of exploits. Always conduct independent research before interacting with digital assets.
 
 ---
 
-*Copyright © 2024 ChainScore AI Research Group. All rights reserved.*
+*Built by the PumpGuardX Research Group. Open Source and Verifiable.*
