@@ -1,0 +1,27 @@
+{
+    "token_address": "pump_6QKUv81QujBvTdVXWwConRkv5YbYTpZuthsbAs6cpump",
+    "trust_score": 88.4,
+    "verdict": "SAFE",
+    "risk_level": "LOW",
+    "analysis": {
+        "wallet_clustering": {
+            "cluster_count": 0,
+            "suspicious_clusters": 0,
+            "fresh_wallet_percentage": 12.5,
+            "top_10_holding_pct": 18.2
+        },
+        "volume_integrity": {
+            "is_organic": true,
+            "fake_volume_ratio": 0.04
+        },
+        "contract_security": {
+            "risk_score": 0,
+            "is_verified": true,
+            "findings": [
+                "Ownership renounced",
+                "Zero tax detected"
+            ]
+        }
+    },
+    "ai_insights": "Project exhibits healthy decentralized wallet distribution and organic accumulation phases."
+}
