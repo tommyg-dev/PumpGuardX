@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Node
+node_modules/
+build/
+.DS_Store
+.env.local
+
+# AI Models
+/data/*.onnx
+/data/*.pth
+/data/*.pb

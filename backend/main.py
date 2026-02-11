@@ -46,6 +46,15 @@ class AnalysisResponse(BaseModel):
 async def health_check():
     return {"status": "online", "system": "PumpGuardX Analysis Engine", "version": "0.1.0"}
 
+@app.get("/version")
+async def get_version():
+    return {
+        "engine": "PumpGuardX Analysis Core",
+        "version": "0.1.0-alpha",
+        "build_hash": "a1b2c3d4",
+        "supported_networks": ["solana"]
+    }
+
 @app.post("/analyze", response_model=AnalysisResponse)
 async def analyze_token(request: AnalysisRequest):
     """
