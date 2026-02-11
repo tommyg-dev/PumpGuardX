@@ -4,6 +4,8 @@
 [![Python](https://img.shields.io/badge/python-3.10+-blue.svg)]()
 [![Frontend](https://img.shields.io/badge/react-18-teal.svg)]()
 [![Status](https://img.shields.io/badge/status-alpha-orange.svg)]()
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
+[![Code Coverage](https://img.shields.io/badge/coverage-84%25-green.svg)]()
 
 **Advanced On-Chain Forensic Protocol for Pump.fun Assets**
 

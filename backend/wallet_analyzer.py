@@ -24,8 +24,17 @@ class WalletAnalyzer:
 
     def detect_wallet_clusters(self, transactions: List[Dict]) -> List[List[str]]:
         """
-        Uses graph theory to identify clusters of wallets that often transact together 
-        or satisfy funding patterns indicative of a single entity (Sybil attack).
+        Identify discrete wallet communities using graph-theoretic partition methods.
+        
+        This module constructs a value-weighted transaction graph and applies 
+        unsupervised community detection. High-density edge clusters that share 
+        common funding ingress points are flagged as potential Sybil entities.
+        
+        Args:
+            transactions: A list of chronologically ordered transaction events.
+            
+        Returns:
+            A list of clusters, where each cluster is a list of associated wallet addresses.
         """
         G = nx.Graph()
         
