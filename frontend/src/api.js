@@ -1,6 +1,6 @@
 /**
- * PumpGuardX API Client
- * Wraps communication with the Python FastAPI backend.
+ * LUMI Agent API Client
+ * Wraps communication with the Lunaria Protocol backend.
  */
 const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 

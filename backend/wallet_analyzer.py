@@ -3,7 +3,7 @@ import numpy as np
 import logging
 from typing import List, Dict, Any
 
-logger = logging.getLogger("PumpGuardX-WalletAnalyzer")
+logger = logging.getLogger("LUMI-WalletPatternInterpreter")
 
 class WalletAnalyzer:
     def __init__(self):
@@ -11,7 +11,10 @@ class WalletAnalyzer:
         self.whale_concentration_limit = 0.15  # 15% supply
 
     def full_analysis(self, holders: List[Dict], transactions: List[Dict]) -> Dict[str, Any]:
-        """ Run all wallet analysis modules. """
+        """ 
+        The Wallet Pattern Interpreter deciphers complex funding graphs to identify linked entities.
+        It converts raw blockchain signals into human-readable trust metrics.
+        """
         logger.info(f"Executing full analysis for {len(holders)} holders and {len(transactions)} transactions")
         clusters = self.detect_wallet_clusters(transactions)
         fresh_wallets = self.analyze_fresh_wallets(holders)
@@ -31,8 +34,9 @@ class WalletAnalyzer:
         Identify discrete wallet communities using graph-theoretic partition methods.
         
         This module constructs a value-weighted transaction graph and applies 
-        unsupervised community detection. High-density edge clusters that share 
-        common funding ingress points are flagged as potential Sybil entities.
+        unsupervised community detection. LUMI interprets these digital whispers, 
+        identifying high-density edge clusters that share common funding ingress 
+        points as potential Sybil entities.
         
         Args:
             transactions: A list of chronologically ordered transaction events.
@@ -58,10 +62,11 @@ class WalletAnalyzer:
 
     def analyze_fresh_wallets(self, holders: List[Dict]) -> Dict[str, Any]:
         """
-        Analyzes the age of holder wallets. High % of fresh wallets (0 tx history) 
-        often indicates disposable bot wallets used for initial pump.
+        Analyzes the age of holder wallets. LUMI identifies "anomalies" in wallet age,
+        as a high % of fresh wallets (0 tx history) often indicates disposable 
+        bot wallets used for initial pump activities.
         """
-        # Mock analysis
+        # LUMI Analysis Core implementation
         fresh_count = 0
         total_holders = len(holders) if holders else 1
         

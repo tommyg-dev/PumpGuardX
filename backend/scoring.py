@@ -6,7 +6,8 @@ class TrustScoreCalculator:
 
     def calculate_score(self, features: Dict[str, Any], ai_confidence: float) -> float:
         """
-        Synthesizes all quantitative metrics and AI confidence into a final 0-100 score.
+        LUMI synthesizes all quantitative metrics and AI confidence into a final 
+        0-100 Trust Score.
         """
         score = self.base_score
         
@@ -34,12 +35,12 @@ class TrustScoreCalculator:
         return max(0, min(100, round(final_score, 1)))
 
     def classify_risk(self, score: float) -> str:
-        """ Map numerical score to risk tiers. """
+        """ Map numerical score to Lunaria Protocol risk tiers. """
         if score > 80:
-            return "LOW"
+            return "SECURE"
         elif score > 50:
-            return "MEDIUM"
+            return "NEUTRAL"
         elif score > 30:
-            return "HIGH"
+            return "CAUTION"
         else:
-            return "CRITICAL"
+            return "DANGER"

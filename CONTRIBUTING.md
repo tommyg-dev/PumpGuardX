@@ -1,6 +1,6 @@
-# Contributing to PumpGuardX
+# Contributing to LUMI Agent
 
-We welcome contributions from security researchers, data scientists, and developers who share our mission of sanitizing the DeFi ecosystem.
+We welcome contributions from security researchers, data scientists, and developers who share our mission of guarding the Lunaria Protocol.
 
 ## How to Contribute
 
@@ -13,7 +13,7 @@ We are constantly looking to refine our ensemble classifier. If you have experie
 - Time-series anomaly detection
 - Smart contract static analysis
 
-Please reach out to the Research Group.
+Please reach out to the Lunaria Research Group.
 
 ### 3. Frontend & UI
 Help us make forensic data more accessible to retail users. Our tech stack is React/Next.js.

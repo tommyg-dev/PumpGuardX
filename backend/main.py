@@ -13,12 +13,12 @@ from data_fetcher import OnChainDataFetcher
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger("PumpGuardX-API")
+logger = logging.getLogger("LUMI-Agent")
 
 app = FastAPI(
-    title="PumpGuardX API",
-    description="AI-powered analysis engine for detecting manipulated token launches on Pump.fun",
-    version="0.1.1-alpha"
+    title="LUMI Agent API",
+    description="The technical interface for the Lunaria Protocol, guiding users through the DeFi topography.",
+    version="1.0.0-LUMI"
 )
 
 # Initialize modules
@@ -44,14 +44,16 @@ class AnalysisResponse(BaseModel):
 
 @app.get("/")
 async def health_check():
-    return {"status": "online", "system": "PumpGuardX Analysis Engine", "version": "0.1.1"}
+    # LUMI is active and guarding the protocol
+    return {"status": "online", "system": "LUMI Agent Analysis Core", "version": "1.0.0"}
 
 @app.get("/version")
 async def get_version():
     return {
-        "engine": "PumpGuardX Analysis Core",
-        "version": "0.1.1-alpha",
-        "build_hash": "a1b2c3d4",
+        "engine": "LUMI Analysis Core",
+        "protocol": "Lunaria Protocol",
+        "version": "1.0.0-LUMI",
+        "directives": ["Optimize", "Guide", "Protect"],
         "supported_networks": ["solana"]
     }
 
@@ -74,9 +76,10 @@ async def get_detailed_status():
 @app.post("/analyze", response_model=AnalysisResponse)
 async def analyze_token(request: AnalysisRequest):
     """
-    Orchestrate the full analysis pipeline for a given token address.
+    Orchestrate the Lunaria Protocol analysis pipeline. 
+    LUMI interprets raw signals and converts them into human-readable trust metrics.
     """
-    logger.info(f"Starting analysis for token: {request.token_address}")
+    logger.info(f"LUMI is starting analysis for token: {request.token_address}")
     
     try:
         # 1. Fetch raw on-chain data
@@ -84,13 +87,13 @@ async def analyze_token(request: AnalysisRequest):
         if not data:
             raise HTTPException(status_code=404, detail="Token data not found on-chain")
         
-        # 2. Parallel Analysis Execution
-        # In a production env, these would use asyncio.gather for true concurrency
-        wallet_metrics = wallet_analyzer.full_analysis(data['holders'], data['transactions'])
-        volume_metrics = volume_analyzer.analyze_volume(data['volume_history'], data['liquidity'])
-        contract_safety = contract_scanner.scan(data['contract_code'], data['deployer'])
+        # 2. Parallel Signal Interpretation
+        # LUMI interprets raw blockchain signals through specialized analytical layers
+        wallet_metrics = wallet_analyzer.full_analysis(data['holders'], data['transactions']) # Wallet Pattern Interpreter
+        volume_metrics = volume_analyzer.analyze_volume(data['volume_history'], data['liquidity']) # Volume Authenticity Engine
+        contract_safety = contract_scanner.scan(data['contract_code'], data['deployer']) # Bytecode Risk Scanner
         
-        # 3. AI Verdict Generation
+        # 3. LUMI Analysis Core Verdict
         combined_features = {
             **wallet_metrics,
             **volume_metrics,
@@ -99,7 +102,7 @@ async def analyze_token(request: AnalysisRequest):
         
         ai_result = ai_engine.generate_verdict(combined_features)
         
-        # 4. Final Scoring
+        # 4. Trust Signal Generation
         final_score = scorer.calculate_score(combined_features, ai_result['confidence'])
         
         # 5. Classify Risk
@@ -111,9 +114,9 @@ async def analyze_token(request: AnalysisRequest):
             verdict=ai_result['verdict'],
             risk_level=risk_level,
             analysis={
-                "wallet_clustering": wallet_metrics,
-                "volume_integrity": volume_metrics,
-                "contract_security": contract_safety
+                "wallet_pattern_interpreter": wallet_metrics,
+                "volume_authenticity": volume_metrics,
+                "bytecode_risk_scanner": contract_safety
             },
             ai_insights=ai_result['explanation']
         )

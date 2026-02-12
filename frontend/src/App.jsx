@@ -4,8 +4,8 @@ import TokenInput from './components/TokenInput';
 import './App.css';
 
 /**
- * PumpGuardX Frontend Application Root
- * Professional, Sleek UI for On-Chain Forensic Analysis
+ * LUMI Agent Interface
+ * The gateway to the Lunaria Protocol
  */
 function App() {
     const [tokenAddress, setTokenAddress] = useState('');
@@ -41,15 +41,15 @@ function App() {
     return (
         <div className="pgx-container">
             <nav className="pgx-nav">
-                <div className="logo">PumpGuardX AI</div>
+                <div className="logo">LUMI Agent</div>
                 <div className="status-badge">Network: Solana Mainnet</div>
             </nav>
 
             <main className="pgx-content">
                 {!analysisResult ? (
                     <div className="hero-section">
-                        <h1>Advanced On-Chain Analysis</h1>
-                        <p>Detect manipulated pumps before they exploit you.</p>
+                        <h1>Lunaria Protocol: On-Chain Guardian</h1>
+                        <p>LUMI transforms cold data into a warm, human experience.</p>
                         <TokenInput onAnalyze={handleAnalyze} isLoading={isLoading} />
                     </div>
                 ) : (
@@ -62,7 +62,7 @@ function App() {
             </main>
 
             <footer className="pgx-footer">
-                Open Source Protocol | PumpGuardX Research v1.2
+                Interface for the Lunaria Protocol | LUMI Research v1.0
             </footer>
         </div>
     );
