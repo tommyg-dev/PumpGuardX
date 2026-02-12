@@ -1,6 +1,9 @@
 import networkx as nx
 import numpy as np
+import logging
 from typing import List, Dict, Any
+
+logger = logging.getLogger("PumpGuardX-WalletAnalyzer")
 
 class WalletAnalyzer:
     def __init__(self):
@@ -9,6 +12,7 @@ class WalletAnalyzer:
 
     def full_analysis(self, holders: List[Dict], transactions: List[Dict]) -> Dict[str, Any]:
         """ Run all wallet analysis modules. """
+        logger.info(f"Executing full analysis for {len(holders)} holders and {len(transactions)} transactions")
         clusters = self.detect_wallet_clusters(transactions)
         fresh_wallets = self.analyze_fresh_wallets(holders)
         whales = self.identify_whale_concentration(holders)
@@ -46,10 +50,10 @@ class WalletAnalyzer:
             else:
                  G.add_edge(tx['from'], tx['to'], weight=1)
 
-        # Detect communities using Louvain or similar modularity-based algorithm
         # Simulating community detection for this placeholder
         clusters = []
         # Mock logic: clusters larger than 5 wallets are suspect
+        logger.debug(f"Detected {len(clusters)} potential Sybil clusters")
         return clusters 
 
     def analyze_fresh_wallets(self, holders: List[Dict]) -> Dict[str, Any]:

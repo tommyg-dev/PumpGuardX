@@ -9,6 +9,8 @@
 
 **Advanced On-Chain Forensic Protocol for Pump.fun Assets**
 
+[Website](https://www.pumpguardx.fun/) | [X (Twitter)](https://x.com/PGXSOL)
+
 ---
 
 ## 1. Project Overview & Mission Statement

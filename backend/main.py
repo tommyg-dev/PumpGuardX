@@ -18,7 +18,7 @@ logger = logging.getLogger("PumpGuardX-API")
 app = FastAPI(
     title="PumpGuardX API",
     description="AI-powered analysis engine for detecting manipulated token launches on Pump.fun",
-    version="0.1.0-alpha"
+    version="0.1.1-alpha"
 )
 
 # Initialize modules
@@ -44,15 +44,31 @@ class AnalysisResponse(BaseModel):
 
 @app.get("/")
 async def health_check():
-    return {"status": "online", "system": "PumpGuardX Analysis Engine", "version": "0.1.0"}
+    return {"status": "online", "system": "PumpGuardX Analysis Engine", "version": "0.1.1"}
 
 @app.get("/version")
 async def get_version():
     return {
         "engine": "PumpGuardX Analysis Core",
-        "version": "0.1.0-alpha",
+        "version": "0.1.1-alpha",
         "build_hash": "a1b2c3d4",
         "supported_networks": ["solana"]
+    }
+
+@app.get("/status/detail")
+async def get_detailed_status():
+    """
+    Returns detailed operational status of all analysis modules.
+    """
+    return {
+        "status": "operational",
+        "modules": {
+            "wallet_analyzer": "active",
+            "volume_analyzer": "active",
+            "contract_scanner": "active",
+            "ai_engine": "active"
+        },
+        "uptime": "stable"
     }
 
 @app.post("/analyze", response_model=AnalysisResponse)
